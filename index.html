@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Examination Form</h2>
+    <form id="examForm">
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="roll">Roll Number:</label>
+        <input type="number" id="roll" name="roll" required>
+
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject" required>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+            <option value="Computer Science">Computer Science</option>
+        </select>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="showConfirm()">Confirm Details</button>
+        <button type="button" onclick="showPrompt()">Change Subject</button>
+    </form>
+
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    function submitForm() {
+        alert("Your examination form has been submitted.");
+    }
+
+    function showConfirm() {
+        let userConfirmed = confirm("Are you sure all your details are correct?");
+        if (userConfirmed) {
+            document.getElementById("output").innerText = "Details confirmed. You can proceed.";
+        } else {
+            document.getElementById("output").innerText = "Please review your details.";
+        }
+    }
+
+    function showPrompt() {
+        let newSubject = prompt("Enter the new subject you want to choose:");
+        if (newSubject !== null && newSubject !== "") {
+            document.getElementById("subject").value = newSubject;
+            document.getElementById("output").innerText = `Subject changed to "${newSubject}".`;
+        } else {
+            document.getElementById("output").innerText = "Subject not changed.";
+        }
+    }
+</script>
+
+</body>
+</html>
